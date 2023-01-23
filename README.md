@@ -1,21 +1,33 @@
-# package-name
+# @fsubal/next-styled
 
-description
+Easy utility to use styled-components along with Next.js
 
 ### Why?
 
-motivation
+You never want to write the same `Document.getInitialProps` over and over again.
 
 ### How to use
 
 ```
-npm install package-name
+npm install @fsubal/next-styled
 ```
 
 write how to use
 
-```ts
-// sample code
+```tsx
+import { withStyled } from '@fsubal/next-styled';
+
+export default withStyled(function Document() {
+  return (
+    <Html lang="ja">
+      <Head />
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
+});
 ```
 
 ### Development
