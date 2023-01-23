@@ -4,7 +4,38 @@ Easy utility to use styled-components along with Next.js
 
 ### Why?
 
-You never want to write the same `Document.getInitialProps` over and over again.
+When you use styled-components with Next.js, you need to write the `Document.getInitialProps` boilerplate.
+
+```tsx
+export default class MyDocument extends Document {
+  static async getInitialProps(ctx: DocumentContext) {
+    // VERY VERY LONG SO BORING BOILERPLATE
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        });
+
+      const initialProps = await Document.getInitialProps(ctx);
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      };
+    } finally {
+      sheet.seal();
+    }
+  }
+}
+```
 
 ### How to use
 
