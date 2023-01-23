@@ -1,6 +1,6 @@
 {
-  "name": "@fsubal/typescript-package-template",
-  "version": "0.0.0",
+  "name": "@fsubal/next-styled",
+  "version": "0.1.0",
   "main": "dist/index.min.js",
   "types": "dist/src/index.d.ts",
   "files": [
@@ -29,6 +29,9 @@
       "ts"
     ]
   },
+  "dependencies": {
+    "hoist-non-react-statics": "3.3.2"
+  },
   "devDependencies": {
     "@types/jest": "^27.0.1",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
@@ -43,5 +46,10 @@
     "ts-loader": "^9.2.5",
     "ts-node": "^10.2.0",
     "typescript": "^4.3.5"
+  },
+  "peerDependencies": {
+    "next": "*",
+    "styled-components": "*",
+    "react": "*"
   }
 }
