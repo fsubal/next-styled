@@ -42,7 +42,8 @@ export function withStyled<P extends DocumentProps>(
             sheet.collectStyles(<App {...props} />),
         });
 
-      const initialProps = await ctx.defaultGetInitialProps(ctx);
+      const getInitialProps = Component.getInitialProps ?? ctx.defaultGetInitialProps
+      const initialProps = await getInitialProps(ctx);
       return {
         ...initialProps,
         styles: (
